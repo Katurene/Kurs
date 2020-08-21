@@ -50,31 +50,45 @@
 
         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
 
-            <ListBox Name="listBox"  DataContext="{Binding ElementName=cBoxWork,
-                    Path=SelectedItem}"
-                    ItemsSource="{Binding Path=Products}" KeyDown="ListBox_KeyDown">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Margin="10">
-                         
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            
-                            <TextBlock Text="{Binding Path=Name}" Margin="30,0,0,0" Grid.Column="1" Width="170"/>
-                            <TextBlock Text="{Binding Path=Quantity}" Margin="30,0,0,0" Grid.Column="2" Width="70"/>
-                            <TextBlock Text="{Binding Path=Category}" Margin="30,0,0,0" Grid.Column="3" Width="100"/>
-                                <TextBlock Text="{Binding Path=DateOfArrival, StringFormat={}{0:dd.MM.yyyy }}"
-                                    Margin="30,0,0,0" Grid.Column="4" Width="110"/>                            
+            <DataGrid Name="listBox"  Grid.Column="1" 
+                  AutoGenerateColumns="False"
+                      DataContext="{Binding ElementName=cBoxWork, Path=SelectedItem}"
+                      RowHeaderWidth="50"
+                  DataGrid.IsReadOnly ="True"
+                    ItemsSource="{Binding Products}" KeyDown="ListBox_KeyDown">
 
-                        </Grid>
-                    </DataTemplate>                   
-                </ListBox.ItemTemplate>
-            </ListBox>
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Background" Value="#FFADBF82" />
+                        <Setter Property="Padding" Value="5 0" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+
+                <DataGrid.RowHeaderStyle>
+                    <Style TargetType="DataGridRowHeader">
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Background" Value="#FFADBF82" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.RowHeaderStyle>
+
+                <DataGrid.Columns>
+                        <DataGridTextColumn Header="ИМЯ" Binding="{Binding Name}" Width="*">
+                            <DataGridTextColumn.CellStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>                            
+                        </DataGridTextColumn>    
+                        
+                        <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="Категория" Binding="{Binding Category}"/>
+                    <DataGridTextColumn Header="Дата поступления" 
+                                        Binding="{Binding DateOfArrival, StringFormat={}{0:dd.MM.yyyy }}"/>
+                    </DataGrid.Columns>                    
+            </DataGrid>
         </ScrollViewer>
     </Grid>
 </Window>
