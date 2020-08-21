@@ -1,0 +1,80 @@
+﻿<Window x:Class="Kurs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kurs"
+        mc:Ignorable="d"
+        Title="Склад товаров" Height="450" Width="800" FontSize="16">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock FontSize="16" FontWeight="Bold">Список товаров на складе</TextBlock>
+            <ComboBox x:Name="cBoxWork" Margin="0,10,10,10"
+                        DisplayMemberPath="RackCategory"
+                        ItemsSource="{Binding}"
+                        SelectedValuePath="RackId"
+                        SelectedIndex="0" KeyDown="cBoxRack_KeyDown"/>
+            <Button Margin="10" Content="Добавить новый стеллаж товаров" Click="ButtonAddRack_Click"/>
+            <Button Margin="10" Content="Добавить товар" Click="ButtonAddProduct_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="10,30,10,10">Номер стеллажа</TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding ElementName=cBoxWork,
+                    Path=SelectedItem.RackNumber,
+                    StringFormat= Стеллаж № {0} }"
+                    Margin="0,30,0,0"/>
+            <TextBlock Margin="10,0,0,0" Grid.Row="1">Вместимость</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                    Text="{Binding ElementName=cBoxWork,
+                    Path=SelectedItem.Capacity,
+                    StringFormat={}{0} кг.}"/>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+
+            <ListBox Name="listBox"  DataContext="{Binding ElementName=cBoxWork,
+                    Path=SelectedItem}"
+                    ItemsSource="{Binding Path=Products}" KeyDown="ListBox_KeyDown">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                         
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Text="{Binding Path=Name}" Margin="30,0,0,0" Grid.Column="1" Width="170"/>
+                            <TextBlock Text="{Binding Path=Quantity}" Margin="30,0,0,0" Grid.Column="2" Width="70"/>
+                            <TextBlock Text="{Binding Path=Category}" Margin="30,0,0,0" Grid.Column="3" Width="100"/>
+                                <TextBlock Text="{Binding Path=DateOfArrival, StringFormat={}{0:dd.MM.yyyy }}"
+                                    Margin="30,0,0,0" Grid.Column="4" Width="110"/>                            
+
+                        </Grid>
+                    </DataTemplate>                   
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+</Window>

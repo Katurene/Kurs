@@ -1,0 +1,37 @@
+﻿<Window x:Class="Kurs.Dialogs.EditRack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kurs.Dialogs"
+        mc:Ignorable="d"
+        Title="Добавление стеллажа" Height="317.2" Width="710.4">
+    <Grid x:Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Категория стеллажа" Grid.Row="0"/>
+        <TextBox x:Name="textBoxRackCategory" Margin="25 15"
+                 Text="{Binding Path=RackCategory}"
+                 Grid.Row="0" Grid.Column="1"/>
+        <Label Content="Номер стеллажа" Grid.Row="1"/>
+        <TextBox x:Name="textBoxRackNumber" Margin="25 15"
+                 Text="{Binding Path=RackNumber}"
+                 Grid.Row="1" Grid.Column="1"/>
+        <Label Content="Вместимость" Grid.Row="2"/>
+        <TextBox x:Name="textCapacity" Margin="25 15"
+                 Text="{Binding Path=Capacity}"
+                 Grid.Row="2" Grid.Column="1"/>
+        <Button x:Name="ButtonOK" Content="OK" Grid.Row="3" Grid.Column="0" 
+                Margin="25 15" Click="ButtonOK_Click"/>
+        <Button x:Name="ButtonCancel" Content="Cancel" Grid.Row="3" Grid.Column="1" 
+                Margin="25 15" Click="ButtonCancel_Click"/>
+    </Grid>
+</Window>
