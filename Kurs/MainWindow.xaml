@@ -52,6 +52,7 @@
 
             <DataGrid Name="listBox"  Grid.Column="1" 
                   AutoGenerateColumns="False"
+                      LoadingRow="dGrid_LoadingRow" 
                       DataContext="{Binding ElementName=cBoxWork, Path=SelectedItem}"
                       RowHeaderWidth="50"
                   DataGrid.IsReadOnly ="True"
