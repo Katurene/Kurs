@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs"
         mc:Ignorable="d"
-        Title="Склад товаров" Height="450" Width="800" FontSize="16">
+        Title="Склад товаров" Height="450" Width="800" FontSize="16" Background="#FF92D3CB">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,13 +18,15 @@
 
         <StackPanel>
             <TextBlock FontSize="16" FontWeight="Bold">Список товаров на складе</TextBlock>
-            <ComboBox x:Name="cBoxWork" Margin="0,10,10,10"
+            <ComboBox x:Name="cBoxWork" Margin="0,10,69.2,10"
                         DisplayMemberPath="RackCategory"
                         ItemsSource="{Binding}"
                         SelectedValuePath="RackId"
                         SelectedIndex="0" KeyDown="cBoxRack_KeyDown"/>
-            <Button Margin="10" Content="Добавить новый стеллаж товаров" Click="ButtonAddRack_Click"/>
-            <Button Margin="10" Content="Добавить товар" Click="ButtonAddProduct_Click"/>
+            <Button Margin="10,10,69.2,10" Content="Добавить новый стеллаж товаров" Click="ButtonAddRack_Click" 
+                    Background="#FF4A8C83" FontWeight="Bold"/>
+            <Button Margin="10,10,69.2,10" Content="Добавить товар" Click="ButtonAddProduct_Click" 
+                    Background="#FF4A8C83" FontWeight="Bold"/>
         </StackPanel>
 
         <Grid Grid.Column="1">
@@ -36,12 +38,12 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="10,30,10,10">Номер стеллажа</TextBlock>
+            <TextBlock Margin="10,30,10,10" FontWeight="Bold">Номер стеллажа</TextBlock>
             <TextBlock Grid.Column="1" Text="{Binding ElementName=cBoxWork,
                     Path=SelectedItem.RackNumber,
                     StringFormat= Стеллаж № {0} }"
                     Margin="0,30,0,0"/>
-            <TextBlock Margin="10,0,0,0" Grid.Row="1">Вместимость</TextBlock>
+            <TextBlock Margin="10,0,0,0" Grid.Row="1" FontWeight="Bold">Вместимость</TextBlock>
             <TextBlock Grid.Row="1" Grid.Column="1"
                     Text="{Binding ElementName=cBoxWork,
                     Path=SelectedItem.Capacity,
@@ -53,14 +55,15 @@
             <DataGrid Name="listBox"  Grid.Column="1" 
                       AutoGenerateColumns="False"
                       LoadingRow="dGrid_LoadingRow" 
+                      DataGrid.IsReadOnly ="True"
                       DataContext="{Binding ElementName=cBoxWork, Path=SelectedItem}"
-                      RowHeaderWidth="50"                      
-                      ItemsSource="{Binding Products}" KeyDown="ListBox_KeyDown">
+                      RowHeaderWidth="30"                        
+                      ItemsSource="{Binding Products}" KeyDown="ListBox_KeyDown" Background="#FFC4E7E2">
 
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="FontWeight" Value="Bold" />
-                        <Setter Property="Background" Value="#FFADBF82" />
+                        <Setter Property="Background" Value="#FF4A8C83" />
                         <Setter Property="Padding" Value="5 0" />
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     </Style>
@@ -69,7 +72,7 @@
                 <DataGrid.RowHeaderStyle>
                     <Style TargetType="DataGridRowHeader">
                         <Setter Property="FontWeight" Value="Bold" />
-                        <Setter Property="Background" Value="#FFADBF82" />
+                        <Setter Property="Background" Value="#FF4A8C83" />
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     </Style>
                 </DataGrid.RowHeaderStyle>
