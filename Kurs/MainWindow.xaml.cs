@@ -90,10 +90,17 @@ namespace Kurs
             }
         }
 
-        private void ListBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void dGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {            
+            e.Row.Header = e.Row.GetIndex() + 1;
+        }
+        
+        //удаляет только после перезапуска
+        private void ButtonDel_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Delete)
-            {// удаление по клавише delete
+            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
                 if (listBox.SelectedIndex > -1)
                 {
                     int si = cBoxWork.SelectedIndex;
@@ -104,27 +111,24 @@ namespace Kurs
                     racks = rackService.GetAll();
                     cBoxWork.DataContext = racks;
                     cBoxWork.SelectedIndex = si;
-                }
-            }
-            if (e.Key == System.Windows.Input.Key.Insert)
-            {// обновление по клавише Insert               
-                if (listBox.SelectedIndex > -1)
-                {
-                    ProductViewModel productViewModel = listBox.SelectedItem as ProductViewModel;
-                    var dialog = new EditProduct(productViewModel);
-                    var result = dialog.ShowDialog();
-                    if (result == true)
-                    {
-                        rackService.UpdateProduct(productViewModel);
-                        dialog.Close();
-                    }
-                }
+                }              
             }
         }
 
-        private void dGrid_LoadingRow(object sender, DataGridRowEventArgs e)
-        {            
-            e.Row.Header = e.Row.GetIndex() + 1;
+        //изменяет только после перезапуска
+        private void ButtonChange_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedIndex > -1)
+            {
+                ProductViewModel productViewModel = listBox.SelectedItem as ProductViewModel;
+                var dialog = new EditProduct(productViewModel);
+                var result = dialog.ShowDialog();
+                if (result == true)
+                {
+                    rackService.UpdateProduct(productViewModel);
+                    dialog.Close();
+                }
+            }
         }
     }
 }

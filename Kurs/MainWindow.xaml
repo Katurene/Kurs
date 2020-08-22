@@ -18,15 +18,17 @@
 
         <StackPanel>
             <TextBlock FontSize="16" FontWeight="Bold">Список товаров на складе</TextBlock>
-            <ComboBox x:Name="cBoxWork" Margin="0,10,69.2,10"
+            <ComboBox x:Name="cBoxWork" Margin="0,5,69.2,5"
                         DisplayMemberPath="RackCategory"
                         ItemsSource="{Binding}"
                         SelectedValuePath="RackId"
                         SelectedIndex="0" KeyDown="cBoxRack_KeyDown"/>
-            <Button Margin="10,10,69.2,10" Content="Добавить новый стеллаж товаров" Click="ButtonAddRack_Click" 
+            <Button Margin="10,5,69.2,5" Content="Добавить новый стеллаж товаров" Click="ButtonAddRack_Click" 
                     Background="#FF4A8C83" FontWeight="Bold"/>
-            <Button Margin="10,10,69.2,10" Content="Добавить товар" Click="ButtonAddProduct_Click" 
+            <Button Margin="10,5,69.2,5" Content="Добавить товар" Click="ButtonAddProduct_Click" 
                     Background="#FF4A8C83" FontWeight="Bold"/>
+            <Button Content="Удалить" Margin="10,0,258.2,0" FontWeight="Bold" Click="ButtonDel_Click"/>
+            <Button Content="Изменить" Margin="10,5,258.2,0" FontWeight="Bold" Click="ButtonChange_Click" />
         </StackPanel>
 
         <Grid Grid.Column="1">
@@ -58,7 +60,7 @@
                       DataGrid.IsReadOnly ="True"
                       DataContext="{Binding ElementName=cBoxWork, Path=SelectedItem}"
                       RowHeaderWidth="30"                        
-                      ItemsSource="{Binding Products}" KeyDown="ListBox_KeyDown" Background="#FFC4E7E2">
+                      ItemsSource="{Binding Products}" Background="#FFC4E7E2">
 
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
@@ -78,19 +80,19 @@
                 </DataGrid.RowHeaderStyle>
 
                 <DataGrid.Columns>
-                        <DataGridTextColumn Header="ИМЯ" Binding="{Binding Name}" Width="*">
-                            <DataGridTextColumn.CellStyle>
-                                <Style>
-                                    <Setter Property="TextBlock.TextAlignment" Value="Right"/>
-                                </Style>
-                            </DataGridTextColumn.CellStyle>                            
-                        </DataGridTextColumn>    
-                        
-                        <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
-                        <DataGridTextColumn Header="Категория" Binding="{Binding Category}"/>
+                    <DataGridTextColumn Header="ИМЯ" Binding="{Binding Name}" Width="*">
+                        <DataGridTextColumn.CellStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}"/>
                     <DataGridTextColumn Header="Дата поступления" 
                                         Binding="{Binding DateOfArrival, StringFormat={}{0:dd.MM.yyyy }}"/>
-                    </DataGrid.Columns>                    
+                </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
     </Grid>
