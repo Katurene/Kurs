@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs.Dialogs"
         mc:Ignorable="d"
-        Title="Добавление стеллажа" Height="317.2" Width="710.4">
+        Title="Добавление стеллажа" Height="300.4" Width="537.6" Background="#FFCBEBE7" FontSize="16" FontWeight="Bold">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -17,21 +17,21 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Категория стеллажа" Grid.Row="0"/>
+        <Label Content="Категория стеллажа" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxRackCategory" Margin="25 15"
                  Text="{Binding Path=RackCategory}"
                  Grid.Row="0" Grid.Column="1"/>
-        <Label Content="Номер стеллажа" Grid.Row="1"/>
+        <Label Content="Номер стеллажа" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxRackNumber" Margin="25 15"
                  Text="{Binding Path=RackNumber}"
                  Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Вместимость" Grid.Row="2"/>
+        <Label Content="Вместимость" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textCapacity" Margin="25 15"
                  Text="{Binding Path=Capacity}"
                  Grid.Row="2" Grid.Column="1"/>
         <Button x:Name="ButtonOK" Content="OK" Grid.Row="3" Grid.Column="0" 
-                Margin="25 15" Click="ButtonOK_Click"/>
+                Margin="25 15" Click="ButtonOK_Click" Background="#FF4A8C83"/>
         <Button x:Name="ButtonCancel" Content="Cancel" Grid.Row="3" Grid.Column="1" 
-                Margin="25 15" Click="ButtonCancel_Click"/>
+                Margin="25 15" Click="ButtonCancel_Click" Background="#FF4A8C83"/>
     </Grid>
 </Window>

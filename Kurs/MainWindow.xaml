@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs"
         mc:Ignorable="d"
-        Title="Склад товаров" Height="450" Width="800" FontSize="16" Background="#FF92D3CB">
+        Title="Склад товаров" Height="450" Width="800" FontSize="16" Background="#FFCBEBE7">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,17 +18,19 @@
 
         <StackPanel>
             <TextBlock FontSize="16" FontWeight="Bold">Список товаров на складе</TextBlock>
-            <ComboBox x:Name="cBoxWork" Margin="0,5,69.2,5"
+            <ComboBox x:Name="cBoxWork" Margin="0,5,145.2,5"
                         DisplayMemberPath="RackCategory"
                         ItemsSource="{Binding}"
                         SelectedValuePath="RackId"
-                        SelectedIndex="0" KeyDown="cBoxRack_KeyDown"/>
-            <Button Margin="10,5,69.2,5" Content="Добавить новый стеллаж товаров" Click="ButtonAddRack_Click" 
-                    Background="#FF4A8C83" FontWeight="Bold"/>
-            <Button Margin="10,5,69.2,5" Content="Добавить товар" Click="ButtonAddProduct_Click" 
-                    Background="#FF4A8C83" FontWeight="Bold"/>
-            <Button Content="Удалить" Margin="10,0,258.2,0" FontWeight="Bold" Click="ButtonDel_Click"/>
-            <Button Content="Изменить" Margin="10,5,258.2,0" FontWeight="Bold" Click="ButtonChange_Click" />
+                        SelectedIndex="0" KeyDown="cBoxRack_KeyDown" Background="Black"/>
+            <Button Margin="10,5,145.2,5" Content="Добавить стеллаж товаров" Click="ButtonAddRack_Click" 
+                    Background="#FF6CB9AE" FontWeight="Bold" BorderBrush="#FF3A5357" BorderThickness="2"/>
+            <Button Margin="10,5,145.2,5" Content="Добавить товар" Click="ButtonAddProduct_Click" 
+                    Background="#FF6CB9AE" FontWeight="Bold" BorderThickness="2" BorderBrush="#FF3A5357"/>
+            <Button Content="Удалить" Margin="10,0,258.2,0" FontWeight="Bold" Click="ButtonDel_Click" 
+                    Background="#FF6CB9AE" BorderBrush="#FF3A5357" BorderThickness="2"/>
+            <Button Content="Изменить" Margin="10,5,258.2,0" FontWeight="Bold" Click="ButtonChange_Click" 
+                    Background="#FF6CB9AE" BorderThickness="2" BorderBrush="#FF3A5357" />
         </StackPanel>
 
         <Grid Grid.Column="1">
@@ -60,7 +62,7 @@
                       DataGrid.IsReadOnly ="True"
                       DataContext="{Binding ElementName=cBoxWork, Path=SelectedItem}"
                       RowHeaderWidth="30"                        
-                      ItemsSource="{Binding Products}" Background="#FFC4E7E2">
+                      ItemsSource="{Binding Products}" Background="#FFCBEBE7">
 
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
