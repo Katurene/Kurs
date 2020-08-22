@@ -51,12 +51,11 @@
         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
 
             <DataGrid Name="listBox"  Grid.Column="1" 
-                  AutoGenerateColumns="False"
+                      AutoGenerateColumns="False"
                       LoadingRow="dGrid_LoadingRow" 
                       DataContext="{Binding ElementName=cBoxWork, Path=SelectedItem}"
-                      RowHeaderWidth="50"
-                  DataGrid.IsReadOnly ="True"
-                    ItemsSource="{Binding Products}" KeyDown="ListBox_KeyDown">
+                      RowHeaderWidth="50"                      
+                      ItemsSource="{Binding Products}" KeyDown="ListBox_KeyDown">
 
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
