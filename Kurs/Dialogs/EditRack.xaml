@@ -5,7 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs.Dialogs"
         mc:Ignorable="d"
-        Title="Добавление стеллажа" Height="300.4" Width="537.6" Background="#FFCBEBE7" FontSize="16" FontWeight="Bold">
+        Title="Добавление стеллажа" Height="300.4" Width="537.6" Background="#FFCBEBE7" 
+        FontSize="16" FontWeight="Bold">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                     Value="{Binding RelativeSource={x:Static RelativeSource.Self}, 
+                        Path=(Validation.Errors)[0].ErrorContent}" />
+                    <Setter Property="Background" Value="Pink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="ErrorTempl">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderThickness="2" BorderBrush="Red">
+                    <AdornedElementPlaceholder></AdornedElementPlaceholder>
+                </Border>
+                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                <!--поставит ! напротив ошибки-->
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -23,11 +48,13 @@
                  Grid.Row="0" Grid.Column="1"/>
         <Label Content="Номер стеллажа" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxRackNumber" Margin="25 15"
-                 Text="{Binding Path=RackNumber}"
+                 Text="{Binding Path=RackNumber, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
+                 Validation.ErrorTemplate="{StaticResource ErrorTempl}"
                  Grid.Row="1" Grid.Column="1"/>
         <Label Content="Вместимость" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textCapacity" Margin="25 15"
-                 Text="{Binding Path=Capacity}"
+                 Text="{Binding Path=Capacity, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
+                 Validation.ErrorTemplate="{StaticResource ErrorTempl}"
                  Grid.Row="2" Grid.Column="1"/>
         <Button x:Name="ButtonOK" Content="OK" Grid.Row="3" Grid.Column="0" 
                 Margin="25 15" Click="ButtonOK_Click" Background="#FF4A8C83"/>

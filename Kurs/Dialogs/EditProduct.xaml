@@ -5,7 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs.Dialogs"
         mc:Ignorable="d"
-        Title="Редактирование товаров" Height="338" Width="584.8" Background="#FFCBEBE7" FontSize="16" FontWeight="Bold">
+        Title="Редактирование товаров" Height="338" Width="584.8" Background="#FFCBEBE7" 
+        FontSize="16" FontWeight="Bold">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                     Value="{Binding RelativeSource={x:Static RelativeSource.Self}, 
+                        Path=(Validation.Errors)[0].ErrorContent}" />
+                    <Setter Property="Background" Value="Pink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="ErrorTempl">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderThickness="2" BorderBrush="Red">
+                    <AdornedElementPlaceholder></AdornedElementPlaceholder>
+                </Border>
+                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+                <!--поставит * напротив ошибки-->
+            </StackPanel>
+        </ControlTemplate>
+
+    </Window.Resources>
+
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -20,15 +46,18 @@
         </Grid.ColumnDefinitions>
         <Label Content="Название товара" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxName" Margin="25 15"
-                 Text="{Binding Path=Name}"
+                 Text="{Binding Path=Name,ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
+                 Validation.ErrorTemplate="{StaticResource ErrorTempl}"
                  Grid.Row="0" Grid.Column="1"/>
         <Label Content="Количество" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxQuantity" Margin="25 15"
-                 Text="{Binding Path=Quantity}"
+                 Text="{Binding Path=Quantity, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
+                 Validation.ErrorTemplate="{StaticResource ErrorTempl}"
                  Grid.Row="1" Grid.Column="1"/>
         <Label Content="Категория" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxCategory" Margin="25 15"
-                 Text="{Binding Path=Category}"
+                 Text="{Binding Path=Category, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
+                 Validation.ErrorTemplate="{StaticResource ErrorTempl}"
                  Grid.Row="2" Grid.Column="1"/>
         <Label Content="Дата поступления" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <DatePicker x:Name="dpProduct" Grid.Row="3" Margin="25 15"
