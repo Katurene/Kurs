@@ -42,20 +42,25 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Категория стеллажа" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        
+        <Label Content="Категория стеллажа товаров" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxRackCategory" Margin="25 15"
                  Text="{Binding Path=RackCategory}"
-                 Grid.Row="0" Grid.Column="1"/>
+                 Grid.Row="0" Grid.Column="1" 
+                 ToolTip="Например:Плодоовощные, Напитки, Бакалея"/>
+        
         <Label Content="Номер стеллажа" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxRackNumber" Margin="25 15"
                  Text="{Binding Path=RackNumber, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
                  Validation.ErrorTemplate="{StaticResource ErrorTempl}"
-                 Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Вместимость" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                 Grid.Row="1" Grid.Column="1" />
+        
+        <Label Content="Вместимость (кг)" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textCapacity" Margin="25 15"
                  Text="{Binding Path=Capacity, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
                  Validation.ErrorTemplate="{StaticResource ErrorTempl}"
-                 Grid.Row="2" Grid.Column="1"/>
+                 Grid.Row="2" Grid.Column="1" />
+        
         <Button x:Name="ButtonOK" Content="OK" Grid.Row="3" Grid.Column="0" 
                 Margin="25 15" Click="ButtonOK_Click" Background="#FF4A8C83"/>
         <Button x:Name="ButtonCancel" Content="Cancel" Grid.Row="3" Grid.Column="1" 

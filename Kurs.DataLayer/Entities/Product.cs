@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,6 @@ namespace Kurs.DataLayer.Entities
 
         // Навигационные свойства
         public int RackId { get; set; }     // ключ группы
-        public Rack Rack { get; set; }   //стеллаж
+        public Rack Rack { get; set; }   //стеллаж        
     }
 }

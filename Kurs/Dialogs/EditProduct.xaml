@@ -26,7 +26,7 @@
                     <AdornedElementPlaceholder></AdornedElementPlaceholder>
                 </Border>
                 <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
-                <!--поставит * напротив ошибки-->
+                <!--поставит  напротив ошибки-->
             </StackPanel>
         </ControlTemplate>
 
@@ -44,22 +44,33 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Content="Название товара" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        
+        <Label Content="Название товара" Grid.Row="0" 
+               HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxName" Margin="25 15"
                  Text="{Binding Path=Name,ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
                  Validation.ErrorTemplate="{StaticResource ErrorTempl}"
-                 Grid.Row="0" Grid.Column="1"/>
-        <Label Content="Количество" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                 Grid.Row="0" Grid.Column="1"
+                 ToolTip="Например: молоко, яблоки, мыло, вино"/>
+        
+        <Label Content="Количество (кг)" Grid.Row="1" 
+               HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxQuantity" Margin="25 15"
                  Text="{Binding Path=Quantity, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
                  Validation.ErrorTemplate="{StaticResource ErrorTempl}"
-                 Grid.Row="1" Grid.Column="1"/>
-        <Label Content="Категория" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                 Grid.Row="1" Grid.Column="1"
+                 ToolTip="Общий вес товара, размещенного на стелаже, не должен превышать его вместимость"/>
+        
+        <Label Content="Категория" Grid.Row="2" 
+               HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox x:Name="textBoxCategory" Margin="25 15"
                  Text="{Binding Path=Category, ValidatesOnExceptions=True,UpdateSourceTrigger=PropertyChanged}" 
                  Validation.ErrorTemplate="{StaticResource ErrorTempl}"
-                 Grid.Row="2" Grid.Column="1"/>
-        <Label Content="Дата поступления" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                 Grid.Row="2" Grid.Column="1"
+                 ToolTip="Например: овощи, фрукты, напитки"/>
+        
+        <Label Content="Дата поступления" Grid.Row="3" 
+               HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <DatePicker x:Name="dpProduct" Grid.Row="3" Margin="25 15"
                     SelectedDate="{Binding Path=DateOfArrival}"
                     Grid.Column="1"/>

@@ -51,7 +51,7 @@ namespace Kurs
         private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
         {
             var product = new ProductViewModel();
-            product.DateOfArrival = new DateTime(1990, 01, 01);
+            product.DateOfArrival = new DateTime(2020, 01, 01);
             var dialog = new EditProduct(product);
             var result = dialog.ShowDialog();
             if (result == true)

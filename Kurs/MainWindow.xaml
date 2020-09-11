@@ -82,7 +82,7 @@
                 </DataGrid.RowHeaderStyle>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ИМЯ" Binding="{Binding Name}" Width="*">
+                    <DataGridTextColumn Header="Название товара" Binding="{Binding Name}" Width="*">
                         <DataGridTextColumn.CellStyle>
                             <Style>
                                 <Setter Property="TextBlock.TextAlignment" Value="Right"/>
